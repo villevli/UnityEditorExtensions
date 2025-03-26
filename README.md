@@ -3,6 +3,7 @@
 Collection of small editor extensions, tools and tweaks.
 
 - [DefaultAssetInspector](Editor/DefaultAssetInspector.cs) - Shows the content of unsupported files in the inspector
+- [GameViewObjectPicker](Editor/GameViewObjectPicker.cs) - Left click to select the object that is visible under the cursor in game view. If in play mode it needs to be paused
 
 
 ## Installation
