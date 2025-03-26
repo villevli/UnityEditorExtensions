@@ -1,0 +1,16 @@
+{
+  "name": "com.villevli.editor-extensions",
+  "version": "0.1.0",
+  "displayName": "VL Editor Extensions",
+  "description": "Collection of small editor extensions, tools and tweaks.",
+  "unity": "2021.3",
+  "keywords": [
+    "editor",
+    "extensions"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Ville Lindblad",
+    "email": "villevli.dev@gmail.com"
+  }
+}
