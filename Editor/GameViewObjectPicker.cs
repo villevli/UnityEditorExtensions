@@ -4,10 +4,12 @@ using System.Reflection;
 using UnityEditor;
 using UnityEditor.ShortcutManagement;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
-using UnityEngine.UI;
 using UnityEngine.UIElements;
+#if USE_UGUI
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+#endif
 
 namespace VLEditorExtensions
 {
@@ -248,6 +250,7 @@ namespace VLEditorExtensions
 
         public static void RaycastEventSystemAtScreenPos(Vector3 screenPos, int targetDisplay, List<RaycastResult> results)
         {
+#if USE_UGUI
             var eventSystem = EventSystem.current;
             if (eventSystem == null)
             {
@@ -274,6 +277,7 @@ namespace VLEditorExtensions
                     normal = res.worldNormal
                 });
             }
+#endif
         }
 
         public static void RaycastPhysicsAtScreenPos(Vector3 screenPos, int targetDisplay, List<RaycastResult> results)
@@ -312,7 +316,9 @@ namespace VLEditorExtensions
             //     .GroupBy(x => x.GetType())
             //     .Select(group => $"{group.Key,-20} {group.Count()}")));
 
+#if USE_UGUI
             RaycastCanvasGraphics(screenPos, targetDisplay, includeTransparent, results);
+#endif
 
             foreach (var camera in Camera.allCameras)
             {
@@ -389,6 +395,7 @@ namespace VLEditorExtensions
             return 0;//lhs.index.CompareTo(rhs.index);
         }
 
+#if USE_UGUI
         public static void RaycastCanvasGraphics(Vector2 screenPos, int targetDisplay, bool includeNonVisible, List<RaycastResult> results)
         {
             foreach (var canvas in Object.FindObjectsByType<Canvas>(FindObjectsInactive.Exclude, FindObjectsSortMode.None))
@@ -554,7 +561,7 @@ namespace VLEditorExtensions
             }
             return false;
         }
-
+#endif // USE_UGUI
 
         private static Mesh _bakedMesh;
         private static Mesh _spriteMesh;

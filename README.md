@@ -22,7 +22,9 @@ For now development should be done in Unity 2021.3 to preserve backwards compabi
 
 See the `TestAssets/` folder for scenes and assets to test the different scripts.
 
-To test in different Unity versions easily, create a separate project for each version and create a symbolic link in the Packages folder. Any changes you make will then appear in all projects automatically.
+Avoid dependencies to other packages. Use the Version Defines in Assembly Definition to conditionally support some if needed. E.g. define `USE_UGUI` when using `com.unity.ugui` and `USE_TMPRO` when using `com.unity.textmeshpro`.
+
+To test in different Unity versions easily, create a separate project for each version and create a symbolic link in the Packages folder. Any changes you make will then appear in all projects automatically. Or you can use the "Add package from disk" option in Package Manager in the other projects.
 
 Example for Windows to create a link in UnityPackageTestProject6000 that points to UnityPackageTestProject. Run cmd as admin
 ```bat
