@@ -676,7 +676,11 @@ namespace VLEditorExtensions
 
                     if (psr.renderMode != ParticleSystemRenderMode.None)
                     {
+#if UNITY_2023_3_OR_NEWER
+                        psr.BakeMesh(_bakedMesh, eventCamera, ParticleSystemBakeMeshOptions.Default);
+#else
                         psr.BakeMesh(_bakedMesh, eventCamera, false);
+#endif
                         if (_bakedMesh.subMeshCount > 0 && _bakedMesh.vertexCount > 0)
                         {
                             if (IntersectRayMesh(ray, _bakedMesh, psr.transform.localToWorldMatrix, out var rayHit))
@@ -694,7 +698,11 @@ namespace VLEditorExtensions
                         }
                     }
 
+#if UNITY_2023_3_OR_NEWER
+                    psr.BakeTrailsMesh(_bakedMesh, eventCamera, ParticleSystemBakeMeshOptions.Default);
+#else
                     psr.BakeTrailsMesh(_bakedMesh, eventCamera, false);
+#endif
                     if (_bakedMesh.subMeshCount > 0 && _bakedMesh.vertexCount > 0)
                     {
                         if (IntersectRayMesh(ray, _bakedMesh, psr.transform.localToWorldMatrix, out var trailHit) && trailHit.distance < dist)
