@@ -5,6 +5,7 @@ Collection of small editor extensions, tools and tweaks.
 - [DefaultAssetInspector](Editor/DefaultAssetInspector.cs) - Shows the content of unsupported files in the inspector
 - [GameViewObjectPicker](Editor/GameViewObjectPicker.cs) - Left click to select the object that is visible under the cursor in game view. If in play mode it needs to be paused
 - [GameViewScreenshot](Editor/GameViewScreenshot.cs) - Quickly take screenshots with F12 from the Game View or the Simulator View.
+- [DockAreaDragAndDrop](Editor/DockAreaDragAndDrop.cs) - Quickly open a tab for assets or objects that are dragged and dropped into the dock area.
 
 
 ## Installation
