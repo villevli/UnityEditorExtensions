@@ -25,7 +25,9 @@ namespace VLEditorExtensions
 
         private static void Update()
         {
-            if (!EditorWindow.mouseOverWindow)
+            var mouseOverWindow = EditorWindow.mouseOverWindow;
+
+            if (mouseOverWindow == null)
             {
                 return;
             }
@@ -33,7 +35,7 @@ namespace VLEditorExtensions
             var curEvent = (Event)typeof(Event).GetField("s_Current", BindingFlags.Static | BindingFlags.NonPublic)
                                                .GetValue(null);
 
-            var dockAreaPos = EditorWindow.mouseOverWindow.rootVisualElement.contentRect;
+            var dockAreaPos = mouseOverWindow.rootVisualElement.contentRect;
             dockAreaPos.height = DockAreaTabHeight;
             if (!dockAreaPos.Contains(curEvent.mousePosition))
             {
@@ -48,7 +50,7 @@ namespace VLEditorExtensions
             {
                 DragAndDrop.AcceptDrag();
 
-                AddTab(OpenPropertyEditor(DragAndDrop.objectReferences.First()), nextTo: EditorWindow.mouseOverWindow);
+                AddTab(OpenPropertyEditor(DragAndDrop.objectReferences.First()), nextTo: mouseOverWindow);
             }
         }
 
